@@ -376,4 +376,21 @@ interface EchoFunc {
 type SumFunc = (...nums: number[]): number;
 ```
 
+### MaybeType is not supported
+
+```js
+// @flow
+interface Props {
+  account: ?Account;
+}
+```
+
+vs
+
+```ts
+interface Props {
+  account: Account | undefined | null;
+}
+```
+
 ### React file needs .tsx extension
