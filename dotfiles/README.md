@@ -21,7 +21,7 @@ Create project directory and move inside.
 ```sh
 # console
 
-$ mkdir dotfiels && cd dotfiles
+$ mkdir dotfiles && cd dotfiles
 ```
 
 Create `install` script file on root.
@@ -35,7 +35,7 @@ $ touch install
 $ chmod +x ./install
 ```
 
-Open current directory in your favorite editor
+Open current directory in your favorite editor.
 
 ```sh
 # console
@@ -76,7 +76,7 @@ if [ "$(dscl . -read ~/ UserShell)" = "UserShell: /bin/bash" ]; then
 fi
 ```
 
-Now, let's add script to install Homebrew if it isn't already.
+Now, Add a script to install Homebrew if it isn't already.
 
 ```sh
 # ./install
@@ -259,14 +259,23 @@ $ ls -la ~/.zshrc
 $ source ~/.zshrc
 ```
 
+Tips: If you want to unlink the symlink just created by stow, run this command.
+
+```sh
+# console
+
+$ stow -vD -d ./dotfiles/packages -t $HOME zsh
+# -D command unlinks the package
+```
+
 Now, add a configuration file for `starship`.
-`starship` configuration file needs to be created like this (`~/.config/starship.toml`) in our system so...
+`starship` configuration file needs to be created like this (`~/.config/starship/starship.toml`) in our system so...
 
 ```sh
 # console
 
 $ mkdir -p ./packages/starship/.config
-$ touch ./packages/starship/.config/staship.toml
+$ touch ./packages/starship/.config/starship.toml
 ```
 
 Let's change our prompt from `>` to `🦄` because why not? 🤷‍♀️
@@ -278,6 +287,34 @@ add_newline = false
 
 [character]
 symbol = "🦄 "
+
+[git_branch]
+symbol = "🌱 "
+```
+
+Add script to create `~/.config` directory if it doesn't exist yet just before the `stow` command.
+
+```sh
+# ./install
+
+# ...
+
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config/
+fi
+
+stow -v ...
+```
+
+Add starship package to `stow` command.
+
+```sh
+# ./install
+
+# ...
+
+# add starship to the end of the already created stow command
+stow -v -d "$CLONE_PATH"/dotfiles/packages -t $HOME zsh starship # <- this
 ```
 
 Now run `./install` again then you should see the unicorn emoji.
