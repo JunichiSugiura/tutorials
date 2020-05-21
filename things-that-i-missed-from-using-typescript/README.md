@@ -159,7 +159,7 @@ interface IncrementAction {
   readonly payload: { num: number };
 }
 
-interface Reset {
+interface ResetAction {
   readonly type: ActionType.Reset;
 }
 
