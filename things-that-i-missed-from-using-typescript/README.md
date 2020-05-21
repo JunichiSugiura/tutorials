@@ -148,7 +148,7 @@ const initialState = {
 };
 
 enum ActionType {
-  Increment = "app/count/INCREMENT",
+  Increment = "app/counter/INCREMENT",
   Reset = "app/counter/RESET",
 }
 
