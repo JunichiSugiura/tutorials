@@ -2,6 +2,8 @@
 
 ## Dotfiles Tutorial
 
+_⚠️ This tutorial is meant for macOS only._
+
 ### Tools we use
 
 - [Homebrew bundle](https://github.com/Homebrew/homebrew-bundle)
@@ -13,6 +15,8 @@ Homebrew bundle will be used to install CLI tools as well as desktop apps.
 Then, we'll link all config files (aka. dotfiles) with GNU stow.
 
 Finally, we'll sync all VSCode settings usign "Settings Sync" which is shipped in v1.45 as a preview feature.
+
+If you like to see working example, you can either reference other files in this directory or see my actual [dotfiels repo](https://github.com/JunichiSugiura/dotfiles).
 
 ### Step 1: Setup
 
