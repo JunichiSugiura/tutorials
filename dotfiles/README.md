@@ -16,7 +16,7 @@ Then, we'll link all config files (aka. dotfiles) with GNU stow.
 
 Finally, we'll sync all VSCode settings usign "Settings Sync" which is shipped in v1.45 as a preview feature.
 
-If you like to see working example, you can either reference other files in this directory or see my actual [dotfiels repo](https://github.com/JunichiSugiura/dotfiles).
+__If you like to see a working example, you can either reference other files in this directory or see my actual [dotfiels repo](https://github.com/JunichiSugiura/dotfiles).__
 
 ### Step 1: Setup
 
