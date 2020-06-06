@@ -2,6 +2,8 @@
 
 ## Dotfiles Tutorial
 
+_⚠️ This tutorial is meant for macOS only._
+
 ### Tools we use
 
 - [Homebrew bundle](https://github.com/Homebrew/homebrew-bundle)

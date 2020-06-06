@@ -1,0 +1,33 @@
+GET http://localhost:8000/
+
+###
+
+GET http://localhost:8000/todos
+
+
+###
+
+GET http://localhost:8000/todos/asdf
+
+###
+
+POST http://localhost:8000/todos
+content-type: application/json
+
+{
+    "title": "Walk 🦕"
+}
+
+###
+
+PUT http://localhost:8000/todos/2c95e749-4d3e-40dd-898f-03d260360a9f
+content-type: application/json
+
+{
+    "done": true
+}
+
+###
+
+DELETE http://localhost:8000/todos/2c95e749-4d3e-40dd-898f-03d260360a9f
+content-type: application/json
