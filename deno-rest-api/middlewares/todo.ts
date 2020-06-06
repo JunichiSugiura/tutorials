@@ -1,6 +1,6 @@
 import { RouterContext, Status } from "../deps.ts";
-import { todoModel } from "../model/mod.ts";
-import { handleError, getParams } from "./util.ts";
+import { todoModel } from "../models/mod.ts";
+import { handleError, getParams } from "./utils.ts";
 
 export async function getAll(ctx: RouterContext) {
   const data = await todoModel.getAll();

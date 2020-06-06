@@ -1,5 +1,5 @@
 import { uuid } from "../deps.ts";
-import { toMap, fromMap } from "./util.ts";
+import { toMap, fromMap } from "./utils.ts";
 
 interface Todo {
   id: string;

@@ -1,5 +1,5 @@
 import { Router } from "./deps.ts";
-import { rootHandler, todoHandler } from "./middleware/mod.ts";
+import { rootHandler, todoHandler } from "./middlewares/mod.ts";
 
 export const router = new Router();
 
