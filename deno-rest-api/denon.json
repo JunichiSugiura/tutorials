@@ -1,5 +1,5 @@
 {
-  "allow": ["env", "read", "write", "net"],
+  "allow": {"env": true, "read": "./db", "write": "./db", "net": true},
   "$schema": "https://deno.land/x/denon/schema.json",
   "scripts": {
     "start": {

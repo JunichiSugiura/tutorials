@@ -9,11 +9,6 @@ interface Todo {
   updatedAt: string;
 }
 
-export type GetParams = Pick<Todo, "id">;
-export type CreateParams = Pick<Todo, "title">;
-export type UpdateParams = Partial<Todo> & Pick<Todo, "id">;
-export type RemoveParams = Pick<Todo, "id">;
-
 const FILE_PATH = "./db/todos.json";
 
 export async function getAll(): Promise<Todo[]> {
@@ -26,7 +21,7 @@ export async function getAll(): Promise<Todo[]> {
 type Result<T> = [T, undefined] | [undefined, Error];
 
 export async function get(
-  { id }: GetParams,
+  { id }: Pick<Todo, "id">,
 ): Promise<Result<Todo>> {
   const todos = await getAll();
   const todo = toMap(todos).get(id);
@@ -46,7 +41,7 @@ export async function updateAll(todos: Todo[]): Promise<true> {
 }
 
 export async function create(
-  { title }: CreateParams,
+  { title }: Pick<Todo, "title">,
 ): Promise<true> {
   const todos = await getAll();
   const id = uuid.generate();
@@ -67,7 +62,7 @@ export async function create(
 }
 
 export async function update(
-  params: UpdateParams,
+  params: Partial<Todo> & Pick<Todo, "id">,
 ): Promise<Result<true>> {
   const todos = await getAll();
   const todoMap = toMap(todos);
@@ -77,13 +72,16 @@ export async function update(
     return [undefined, new Error("Cannot find item")];
   }
 
-  todoMap.set(params.id, { ...current, ...params });
+  todoMap.set(
+    params.id,
+    { ...current, ...params, updatedAt: new Date().toISOString() },
+  );
   await updateAll(fromMap(todoMap));
   return [true, undefined];
 }
 
 export async function remove(
-  { id }: RemoveParams,
+  { id }: Pick<Todo, "id">,
 ): Promise<Result<true>> {
   const todos = await getAll();
   const todoMap = toMap(todos);

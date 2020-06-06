@@ -1,5 +1,5 @@
 import { Context, isHttpError, Status } from "../deps.ts";
-import { createErrorBody } from "../util.ts";
+import { createErrorBody } from "./util.ts";
 
 export async function errorHandler(
   ctx: Context,

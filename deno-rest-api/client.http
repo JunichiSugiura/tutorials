@@ -4,10 +4,9 @@ GET http://localhost:8000/
 
 GET http://localhost:8000/todos
 
-
 ###
 
-GET http://localhost:8000/todos/asdf
+GET http://localhost:8000/todos/<id>
 
 ###
 
@@ -15,12 +14,12 @@ POST http://localhost:8000/todos
 content-type: application/json
 
 {
-    "title": "Walk 🦕"
+    "title": "Feed 🦕"
 }
 
 ###
 
-PUT http://localhost:8000/todos/2c95e749-4d3e-40dd-898f-03d260360a9f
+PUT http://localhost:8000/todos/<id>
 content-type: application/json
 
 {
@@ -29,5 +28,5 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:8000/todos/2c95e749-4d3e-40dd-898f-03d260360a9f
+DELETE http://localhost:8000/todos/<id>
 content-type: application/json

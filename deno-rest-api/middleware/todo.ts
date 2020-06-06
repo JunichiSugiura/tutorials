@@ -1,6 +1,6 @@
 import { RouterContext, Status } from "../deps.ts";
 import { todoModel } from "../model/mod.ts";
-import { createErrorBody } from "../util.ts";
+import { handleError, getParams } from "./util.ts";
 
 export async function getAll(ctx: RouterContext) {
   const data = await todoModel.getAll();
@@ -9,7 +9,8 @@ export async function getAll(ctx: RouterContext) {
 }
 
 export async function get(ctx: RouterContext) {
-  const [todos, error] = await todoModel.get(ctx.params as todoModel.GetParams);
+  const params = await getParams(ctx);
+  const [todos, error] = await todoModel.get(params);
   if (error) {
     return handleError(ctx, error);
   }
@@ -19,15 +20,15 @@ export async function get(ctx: RouterContext) {
 }
 
 export async function create(ctx: RouterContext) {
-  await todoModel.create(ctx.params as todoModel.CreateParams);
+  const params = await getParams(ctx);
+  await todoModel.create(params);
   ctx.response.status = Status.OK;
   ctx.response.body = { data: "success" };
 }
 
 export async function update(ctx: RouterContext) {
-  const [_, error] = await todoModel.update(
-    ctx.params as todoModel.UpdateParams,
-  );
+  const params = await getParams(ctx);
+  const [_, error] = await todoModel.update(params);
 
   if (error) {
     return handleError(ctx, error);
@@ -38,9 +39,8 @@ export async function update(ctx: RouterContext) {
 }
 
 export async function remove(ctx: RouterContext) {
-  const [_, error] = await todoModel.remove(
-    ctx.params as todoModel.RemoveParams,
-  );
+  const params = await getParams(ctx);
+  const [_, error] = await todoModel.remove(params);
 
   if (error) {
     return handleError(ctx, error);
@@ -48,9 +48,4 @@ export async function remove(ctx: RouterContext) {
 
   ctx.response.status = Status.OK;
   ctx.response.body = { data: "success" };
-}
-
-function handleError(ctx: RouterContext, error: Error): void {
-  ctx.response.status = Status.BadRequest;
-  ctx.response.body = createErrorBody(error);
 }
