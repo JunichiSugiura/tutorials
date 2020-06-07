@@ -14,8 +14,16 @@ POST http://localhost:8000/todos
 content-type: application/json
 
 {
-    "title": "Feed 🦕"
+    "title": "Buy food for 🦕"
 }
+
+# {
+#     "title": "Walk 🦕 to the park"
+# }
+
+# {
+#     "title": "Treat 🦕 to a good meal"
+# }
 
 ###
 
