@@ -1,0 +1,16 @@
+{
+  "allow": {"env": true, "read": "./db", "write": "./db", "net": true},
+  "$schema": "https://deno.land/x/denon/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "server.ts",
+      "desc": "Run the main server"
+    }
+  },
+  "watcher": {
+    "interval": 350,
+    "exts": ["ts", "json"],
+    "match": ["*.*"],
+    "skip": ["*/.git/*", "./db/*"]
+  }
+}
