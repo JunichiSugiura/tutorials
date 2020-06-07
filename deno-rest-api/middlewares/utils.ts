@@ -26,6 +26,11 @@ export function handleError(ctx: RouterContext, error: Error): void {
   ctx.response.body = createErrorBody(error);
 }
 
+export function handleOK(ctx: RouterContext, data: any): void {
+  ctx.response.status = Status.OK;
+  ctx.response.body = { data };
+}
+
 export async function getParams(ctx: RouterContext) {
   const { value } = await ctx.request.body();
   return {

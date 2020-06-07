@@ -37,4 +37,3 @@ content-type: application/json
 ###
 
 DELETE http://localhost:8000/todos/<id>
-content-type: application/json

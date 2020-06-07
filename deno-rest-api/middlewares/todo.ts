@@ -1,11 +1,10 @@
 import { RouterContext, Status } from "../deps.ts";
 import { todoModel } from "../models/mod.ts";
-import { handleError, getParams } from "./utils.ts";
+import { handleError, handleOK, getParams } from "./utils.ts";
 
 export async function getAll(ctx: RouterContext) {
   const data = await todoModel.getAll();
-  ctx.response.status = Status.OK;
-  ctx.response.body = { data };
+  handleOK(ctx, data);
 }
 
 export async function get(ctx: RouterContext) {
@@ -15,15 +14,14 @@ export async function get(ctx: RouterContext) {
     return handleError(ctx, error);
   }
 
-  ctx.response.status = Status.OK;
-  ctx.response.body = { data: todos };
+  handleOK(ctx, todos);
 }
 
 export async function create(ctx: RouterContext) {
   const params = await getParams(ctx);
   await todoModel.create(params);
   ctx.response.status = Status.OK;
-  ctx.response.body = { data: "success" };
+  handleOK(ctx, "success");
 }
 
 export async function update(ctx: RouterContext) {
@@ -34,8 +32,7 @@ export async function update(ctx: RouterContext) {
     return handleError(ctx, error);
   }
 
-  ctx.response.status = Status.OK;
-  ctx.response.body = { data: "success" };
+  handleOK(ctx, "success");
 }
 
 export async function remove(ctx: RouterContext) {
@@ -46,6 +43,5 @@ export async function remove(ctx: RouterContext) {
     return handleError(ctx, error);
   }
 
-  ctx.response.status = Status.OK;
-  ctx.response.body = { data: "success" };
+  handleOK(ctx, "success");
 }
