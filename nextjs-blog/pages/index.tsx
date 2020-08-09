@@ -1,18 +1,12 @@
-import Head from "next/head";
 import { GetStaticProps } from "next";
+import styled from "@emotion/styled";
+import { Theme } from "theme-ui";
 
 export default function Home() {
   return (
-    <div>
-      <Head>
-        <title>NextJS Blog</title>
-        <link
-          rel="icon"
-          href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/unicorn-face_1f984.png"
-        />
-      </Head>
-      <main>Welcome</main>
-    </div>
+    <Container>
+      <H2>Home</H2>
+    </Container>
   );
 }
 
@@ -21,3 +15,14 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {},
   };
 };
+
+const Container = styled.div`
+  width: 100vw;
+  max-width: 60rem;
+  align-items: center;
+`;
+
+const H2 = styled.h2<{ theme: Theme }>`
+  text-align: center;
+  text-decoration: underline ${({ theme }) => theme.colors.primary};
+`;
