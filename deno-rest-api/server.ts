@@ -16,4 +16,6 @@ app.addEventListener("listen", ({ hostname, port }) => {
   );
 });
 
-await app.listen({ port: parseInt(Deno.env.get("PORT") ?? "8000") });
+const port = parseInt(Deno.env.get("PORT") ?? "8000");
+
+await app.listen({ port });
